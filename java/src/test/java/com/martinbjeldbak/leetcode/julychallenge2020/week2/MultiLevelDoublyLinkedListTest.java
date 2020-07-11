@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class MultiLevelDoublyLinkedListTest {
     Solution subject = new Solution();
@@ -24,6 +25,11 @@ class MultiLevelDoublyLinkedListTest {
         one.addChild(three);
 
         assertEquals(List.of(1, 3, 2), subject.flatten(one).serialize());
+    }
+
+    @Test
+    public void testNoInput() {
+        assertNull(subject.flatten(null));
     }
 
     @Test
@@ -80,6 +86,39 @@ class MultiLevelDoublyLinkedListTest {
         eleven.addNext(twelve);
 
         assertEquals(List.of(1, 2, 3, 7, 8, 11 , 12, 9, 10, 4, 5, 6),
+                     subject.flatten(one).serialize());
+    }
+
+    @Test
+    /*
+        Node:
+        1 - 2
+        |
+        3 - 4
+
+        Becomes:
+        1 3 4 2
+
+     */
+    public void testExampleTwo() {
+        Node one = new Node();
+        one.val = 1;
+
+        Node two = new Node();
+        two.val = 2;
+
+        Node three = new Node();
+        three.val = 3;
+
+        Node four = new Node();
+        four.val = 4;
+
+        one.addNext(two);
+        one.addChild(three);
+        three.addNext(four);
+
+
+        assertEquals(List.of(1, 3, 4, 2),
                      subject.flatten(one).serialize());
     }
 }

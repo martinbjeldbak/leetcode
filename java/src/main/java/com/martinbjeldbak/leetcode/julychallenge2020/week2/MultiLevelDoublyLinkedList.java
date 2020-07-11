@@ -24,6 +24,11 @@ class Node {
 
     public List<Integer> serialize() {
         Node s = this;
+
+        if(s == null) {
+            return new ArrayList<>(0);
+        }
+
         List<List<Integer>> levels = new ArrayList<>();
         List<Integer> siblings = new ArrayList<>();
         levels.add(siblings);
@@ -52,17 +57,29 @@ class Node {
 // https://leetcode.com/explore/featured/card/july-leetcoding-challenge/545/week-2-july-8th-july-14th/3386/
 class Solution {
     public Node flatten(Node head) {
+        if(head == null) {
+            return null;
+        }
+
+        if(head.next != null) {
+            head.next = flatten(head.next);
+        }
 
         if(head.child != null) {
-            Node newHead = new Node();
-            newHead.val = head.val;
-            newHead.prev = head.prev;
-            newHead.next = head.child;
-            newHead.next.next = head.next;
+            Node last = head.next;
+            Node child = flatten(head.child);
 
-            return newHead;
+            head.next = child;
+            head.child = null;
+            child.prev = head;
 
+            while(child.next != null) {
+                child = child.next;
+            }
+            child.next = last;
+            last.prev = child;
         }
+
         return head;
     }
 }
