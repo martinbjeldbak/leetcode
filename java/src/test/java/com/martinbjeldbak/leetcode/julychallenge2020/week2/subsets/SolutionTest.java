@@ -19,11 +19,6 @@ public class SolutionTest {
     }
 
     @Test
-    public void testCaseSlow() {
-        assertEquals(List.of(2, 3), subject.subsets(new int[] {1,2,3,4,5,6,7,8,10,0}));
-    }
-
-    @Test
     public void testCaseNone() {
         assertEquals(List.of(List.of()), subject.subsets(new int[] {}));
     }
