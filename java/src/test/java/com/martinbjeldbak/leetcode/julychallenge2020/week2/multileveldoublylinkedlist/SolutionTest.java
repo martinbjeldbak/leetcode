@@ -1,14 +1,15 @@
-package com.martinbjeldbak.leetcode.julychallenge2020.week2;
+package com.martinbjeldbak.leetcode.julychallenge2020.week2.multileveldoublylinkedlist;
 
+import com.martinbjeldbak.leetcode.julychallenge2020.week2.multileveldoublylinkedlist.Node;
+import com.martinbjeldbak.leetcode.julychallenge2020.week2.multileveldoublylinkedlist.Solution;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class MultiLevelDoublyLinkedListTest {
+class SolutionTest {
     Solution subject = new Solution();
 
     @Test
