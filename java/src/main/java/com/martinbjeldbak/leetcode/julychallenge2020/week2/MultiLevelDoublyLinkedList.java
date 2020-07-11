@@ -2,7 +2,9 @@ package com.martinbjeldbak.leetcode.julychallenge2020.week2;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // Definition for a Node.
 class Node {
@@ -11,28 +13,39 @@ class Node {
     public Node next;
     public Node child;
 
-    @Override
-    public int hashCode() {
-        System.out.println("YEEHAW");
-        return super.hashCode();
+    public void addNext(Node nextNode) {
+        next = nextNode;
+        nextNode.prev = this;
+    }
+
+    public void addChild(Node childNode) {
+        child = childNode;
     }
 
     public List<Integer> serialize() {
-        List<Integer> self = new ArrayList<>();
-        self.add(val);
+        Node s = this;
+        List<List<Integer>> levels = new ArrayList<>();
+        List<Integer> siblings = new ArrayList<>();
+        levels.add(siblings);
+        siblings.add(s.val);
 
-        if(next != null) {
-            self.addAll(next.serialize());
-        }
-        else {
-            self.add(null);
+        int siblingCount = 1;
+        while(s.next != null) {
+            s = s.next;
+            siblings.add(s.val);
+            siblingCount++;
+
+            if(s.child != null) {
+                List<Integer> indentation = new ArrayList<>(siblingCount);
+                for(int i = 0; i < siblingCount; i++) {
+                    indentation.add(null);
+                }
+                indentation.addAll(s.child.serialize());
+                levels.add(indentation);
+            }
         }
 
-        if(child != null) {
-            self.addAll(child.serialize());
-        }
-
-        return self;
+        return levels.stream().flatMap(Collection::stream).collect(Collectors.toList());
     }
 };
 
