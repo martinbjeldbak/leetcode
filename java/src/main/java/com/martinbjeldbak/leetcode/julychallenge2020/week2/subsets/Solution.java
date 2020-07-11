@@ -1,11 +1,46 @@
 package com.martinbjeldbak.leetcode.julychallenge2020.week2.subsets;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 // Source: https://leetcode.com/explore/featured/card/july-leetcoding-challenge/545/week-2-july-8th-july-14th/3387/
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        return new ArrayList<>();
+        List<List<Integer>> combinations = new ArrayList<>();
+        Integer combinationLength = nums.length-1;
+
+        List<Integer> numsList = new ArrayList<>();
+        for(int n: nums) {
+            numsList.add(n);
+        }
+
+        Set<List<Integer>> subsets = subsetsOf(numsList);
+        Set<List<Integer>> totals = new HashSet<>();
+
+        for(List<Integer> subset : subsets) {
+            int[] converted = new int[subset.size()];
+            for(int i = 0; i < converted.length; i++) {
+                converted[i] = subset.get(i);
+            }
+            totals.addAll(subsets(converted));
+        }
+
+        totals.addAll(subsets);
+        totals.add(numsList);
+
+        return new ArrayList<>(totals);
+    }
+
+    public Set<List<Integer>> subsetsOf(List<Integer> nums) {
+        Set<List<Integer>> subSets = new HashSet<>();
+
+        for(int i = 0; i < nums.size(); i++) {
+            List<Integer> newSubset = new ArrayList<>();
+
+            newSubset.addAll(nums.subList(0, i));
+            newSubset.addAll(nums.subList(i + 1, nums.size()));
+
+            subSets.add(newSubset);
+        }
+        return subSets;
     }
 }
