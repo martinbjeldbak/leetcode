@@ -23,18 +23,6 @@ class MultiLevelDoublyLinkedListTest {
         one.addNext(two);
         one.addChild(three);
 
-        Node flattenedOne = new Node();
-        Node flattenedTwo = new Node();
-        Node flattenedThree = new Node();
-
-        flattenedOne.val = 1;
-        flattenedTwo.val = 2;
-        flattenedThree.val = 3;
-        flattenedOne.next = flattenedThree;
-        flattenedThree.next = flattenedTwo;
-        flattenedThree.prev = flattenedOne;
-        flattenedTwo.prev = flattenedThree;
-
         assertEquals(List.of(1, 3, 2), subject.flatten(one).serialize());
     }
 
