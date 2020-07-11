@@ -22,7 +22,6 @@ class MultiLevelDoublyLinkedListTest {
         two.prev = one;
         one.child = three;
 
-
         Node flattenedOne = new Node();
         Node flattenedTwo = new Node();
         Node flattenedThree = new Node();
@@ -35,6 +34,6 @@ class MultiLevelDoublyLinkedListTest {
         flattenedThree.prev = flattenedOne;
         flattenedTwo.prev = flattenedThree;
 
-        assertEquals(flattenedOne, subject.flatten(one));
+        assertEquals(flattenedOne.serialize(), subject.flatten(one).serialize());
     }
 }
