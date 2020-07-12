@@ -5,10 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// https://leetcode.com/explore/featured/card/july-leetcoding-challenge/544/week-1-july-1st-july-7th/3378/
 class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        System.out.println("Evaluating " + root.val);
-
         List<List<Integer>> nodeOrder = new ArrayList<>();
         bfs(root, 0, nodeOrder);
 
@@ -31,5 +30,4 @@ class Solution {
         bfs(node.left, level + 1, map);
         bfs(node.right, level + 1, map);
     }
-
 }
