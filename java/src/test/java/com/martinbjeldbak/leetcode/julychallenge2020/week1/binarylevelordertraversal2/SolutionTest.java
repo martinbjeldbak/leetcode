@@ -1,6 +1,5 @@
 package com.martinbjeldbak.leetcode.julychallenge2020.week1.binarylevelordertraversal2;
 
-import com.sun.source.tree.Tree;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

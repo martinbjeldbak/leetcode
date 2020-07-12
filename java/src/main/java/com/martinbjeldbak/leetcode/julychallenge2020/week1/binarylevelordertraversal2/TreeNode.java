@@ -12,4 +12,4 @@ package com.martinbjeldbak.leetcode.julychallenge2020.week1.binarylevelordertrav
           this.left = left;
           this.right = right;
       }
-  }
+}
