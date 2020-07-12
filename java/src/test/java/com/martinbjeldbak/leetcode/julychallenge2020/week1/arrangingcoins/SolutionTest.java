@@ -74,4 +74,9 @@ class SolutionTest {
     void test10() {
         assertEquals(4, subject.arrangeCoins(10));
     }
+
+    @Test
+    void testSlow() {
+        assertEquals(37943, subject.arrangeCoins(719885386));
+    }
 }

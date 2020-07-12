@@ -9,9 +9,11 @@ class Solution {
             for(int i = 0; i < numFullStairCases + 1; i++) {
                 n--;
             }
-            numFullStairCases++;
+            if(n >= 0) {
+                numFullStairCases++;
+            }
         }
 
-        return numFullStairCases - 1;
+        return numFullStairCases;
     }
 }
