@@ -1,5 +1,6 @@
 package com.martinbjeldbak.leetcode.julychallenge2020.week1.binarylevelordertraversal2;
 
+import com.sun.source.tree.Tree;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -30,6 +31,15 @@ class SolutionTest {
 
         assertEquals(List.of(List.of(15, 7), List.of(9, 20), List.of(3)),
                      subject.levelOrderBottom(head));
+    }
+
+    @Test
+    void testExample2() {
+        TreeNode head = new TreeNode(3, new TreeNode(9), new TreeNode(20));
+
+        assertEquals(List.of(List.of(9, 20), List.of(3)),
+                subject.levelOrderBottom(head));
+
     }
 
 }
