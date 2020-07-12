@@ -4,9 +4,13 @@ package com.martinbjeldbak.leetcode.julychallenge2020.week2.reversebits;
 public class Solution {
     // you need treat n as an unsigned value
     public int reverseBits(int n) {
-        String binary = String.format("%32s", Integer.toBinaryString(n)).replace(' ', '0');
-        StringBuilder sb = new StringBuilder(binary);
+        int answer = 0;
 
-        return (int)Long.parseLong(sb.reverse().toString(), 2);
+        for(int i = 0; i < 32; i++) {
+            answer = answer << 1;
+            answer = answer | (n & 1);
+            n = n >> 1;
+        }
+        return answer;
     }
 }
