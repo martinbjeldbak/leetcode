@@ -4,13 +4,17 @@ package com.martinbjeldbak.leetcode.julychallenge2020.week1.arrangingcoins;
 class Solution {
     public int arrangeCoins(int n) {
         int numFullStairCases = 0;
+        int nextLevel;
 
         while(n > 0) {
-            for(int i = 0; i < numFullStairCases + 1; i++) {
-                n--;
-            }
-            if(n >= 0) {
+            nextLevel = (numFullStairCases + 1);
+
+            if(n - nextLevel >= 0) {
+                n = n - nextLevel;
                 numFullStairCases++;
+            }
+            else {
+                break;
             }
         }
 
