@@ -28,4 +28,9 @@ class SolutionTest {
         assertEquals(21, subject.reverse(120));
     }
 
+    @Test
+    void testExampleOverflow() {
+        assertEquals(0, subject.reverse(1534236469));
+    }
+
 }
