@@ -1,7 +1,5 @@
 package com.martinbjeldbak.leetcode.julychallenge2020.week2.multileveldoublylinkedlist;
 
-import com.martinbjeldbak.leetcode.julychallenge2020.week2.multileveldoublylinkedlist.Node;
-import com.martinbjeldbak.leetcode.julychallenge2020.week2.multileveldoublylinkedlist.Solution;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -122,22 +120,4 @@ class SolutionTest {
         assertEquals(List.of(1, 3, 4, 2),
                      subject.flatten(one).serialize());
     }
-
-    @Test
-    public void testLongTree() {
-        Node one = new Node();
-        one.val = 4201;
-
-        Node two = new Node();
-        two.val = 1937;
-
-        Node three = new Node();
-        three.val = 3203;
-
-        one.addChild(two);
-        two.addChild(three);
-
-        assertEquals(List.of(4201, 1937, 3203), subject.flatten(one).serialize());
-    }
-
 }
