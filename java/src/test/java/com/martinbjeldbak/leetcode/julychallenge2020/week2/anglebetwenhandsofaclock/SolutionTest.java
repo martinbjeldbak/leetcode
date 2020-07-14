@@ -31,4 +31,19 @@ class SolutionTest {
     void testExample5() {
         assertEquals(0, subject.angleClock(12, 0));
     }
+
+    @Test
+    void testExampleNine() {
+        assertEquals(90, subject.angleClock(9, 0));
+    }
+
+    @Test
+    void testExampleElevenThirty() {
+        assertEquals(165, subject.angleClock(11, 30));
+    }
+
+    @Test
+    void testExampleElevenFiftyNine() {
+        assertEquals(5.5, subject.angleClock(11, 59));
+    }
 }
