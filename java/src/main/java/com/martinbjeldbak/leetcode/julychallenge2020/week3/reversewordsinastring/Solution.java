@@ -4,23 +4,17 @@ package com.martinbjeldbak.leetcode.julychallenge2020.week3.reversewordsinastrin
 class Solution {
     public String reverseWords(String s) {
         String[] sSplit = s.trim().split("\\s+");
-        String[] sReversed = new String[sSplit.length];
-
-        for(int i = 0; i < sSplit.length; i++) {
-            sReversed[i] = sSplit[sSplit.length-1-i];
-            sReversed[sSplit.length-1-i] = sSplit[i];
-        }
 
         StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < sSplit.length; i++) {
-            sb.append(sReversed[i]);
+            sb.append(sSplit[sSplit.length - 1 - i]);
 
             if(i == sSplit.length - 1)
                 continue;
+
             sb.append(" ");
         }
-
 
         return sb.toString();
     }
