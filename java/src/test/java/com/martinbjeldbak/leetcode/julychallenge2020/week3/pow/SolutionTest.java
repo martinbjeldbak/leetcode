@@ -21,4 +21,14 @@ class SolutionTest {
     void testExample3() {
         assertEquals(0.25000, subject.myPow(2.00000, -2));
     }
+
+    @Test
+    void testSlow() {
+        assertEquals(Integer.MAX_VALUE, subject.myPow(2, 31) - 1);
+    }
+
+    @Test
+    void testExampleRounding() {
+        assertEquals(700.28148, subject.myPow(8.88023, 3));
+    }
 }
