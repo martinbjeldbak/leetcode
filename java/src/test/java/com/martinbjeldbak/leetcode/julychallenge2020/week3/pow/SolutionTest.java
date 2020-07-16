@@ -31,4 +31,14 @@ class SolutionTest {
     void testExampleRounding() {
         assertEquals(700.28148, subject.myPow(8.88023, 3));
     }
+
+    @Test
+    void testNZero() {
+        assertEquals(1.00000, subject.myPow(0.44528, 0));
+    }
+
+    @Test
+    void testNOne() {
+        assertEquals(0.44528, subject.myPow(0.44528, 1));
+    }
 }
