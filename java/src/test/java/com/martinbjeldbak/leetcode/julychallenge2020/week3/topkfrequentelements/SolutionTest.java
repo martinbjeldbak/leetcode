@@ -16,4 +16,9 @@ class SolutionTest {
     void testExample2() {
         assertArrayEquals(new int[] { 1 }, subject.topKFrequent(new int[] { 1 }, 1));
     }
+
+    @Test
+    void testExample3() {
+        assertArrayEquals(new int[] { -1, 2 }, subject.topKFrequent(new int[] { 4, 1, -1, 2, -1, 2, 3 }, 2));
+    }
 }
