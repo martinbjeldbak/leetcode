@@ -41,4 +41,24 @@ class SolutionTest {
     void testCase2() {
         assertEquals(0, subject.findMin(new int[] { 7, 0, 1, 2 }));
     }
+
+    @Test
+    void testCaseSingleElement() {
+        assertEquals(1, subject.findMin(new int[] { 1 }));
+    }
+
+    @Test
+    void testCaseEmpty() {
+        assertEquals(-1, subject.findMin(new int[] {}));
+    }
+
+    @Test
+    void testCaseFailed() {
+        assertEquals(1, subject.findMin(new int[] { 5, 1, 2, 3, 4 }));
+    }
+
+    @Test
+    void testCaseFailedExtended() {
+        assertEquals(1, subject.findMin(new int[] { 5, 1, 2, 3, 4, 5 }));
+    }
 }
