@@ -1,14 +1,22 @@
 package com.martinbjeldbak.leetcode.julychallenge2020.week4.minimuminrotatedarrayii;
 
-class Solution {
-    public int findMin(int[] nums) {
-        int minIndex = 0;
+import java.util.Arrays;
 
-        for(int i = 0; i < nums.length; i++) {
-            if(nums[i] < nums[minIndex]) {
-                minIndex = i;
-            }
+class Solution {
+
+    // [7, 0, 1, 2] => 7 !<
+    public int findMin(int[] nums) {
+        int middleIndex = nums.length/2 - (nums.length % 2 == 0 ? 1 : 0);
+
+        if(nums.length == 2) {
+            return Math.min(nums[0], nums[1]);
         }
-        return nums[minIndex];
+        else if(nums[0] < nums[middleIndex]) {
+            return Math.min(nums[0], findMin(Arrays.copyOfRange(nums, middleIndex, nums.length)));
+        }
+        else if(nums[0] >= nums[middleIndex]) {
+            return Math.min(nums[middleIndex], findMin(Arrays.copyOfRange(nums, middleIndex, nums.length)));
+        }
+        return -1;
     }
 }
