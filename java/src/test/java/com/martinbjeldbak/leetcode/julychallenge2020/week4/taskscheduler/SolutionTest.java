@@ -31,4 +31,9 @@ class SolutionTest {
     void testExample3() {
         assertEquals(16, subject.leastInterval(new char[] { 'A','A','A','A','A','A','B','C','D','E','F','G' }, 2));
     }
+
+    @Test
+    void testFailed1() {
+        assertEquals(104, subject.leastInterval(new char[] { 'A','A','A','B','B','B' }, 50));
+    }
 }
