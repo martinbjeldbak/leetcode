@@ -17,4 +17,13 @@ class SolutionTest {
         assertFalse(subject.detectCapitalUse("FlaG"));
     }
 
+    @Test
+    void testMartinExample1() {
+        assertTrue(subject.detectCapitalUse("Google"));
+    }
+
+    @Test
+    void testMartinExample2() {
+        assertTrue(subject.detectCapitalUse("leetcode"));
+    }
 }
