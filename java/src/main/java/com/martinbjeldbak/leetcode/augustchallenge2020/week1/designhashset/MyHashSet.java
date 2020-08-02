@@ -1,5 +1,6 @@
 package com.martinbjeldbak.leetcode.augustchallenge2020.week1.designhashset;
 
+// https://leetcode.com/explore/challenge/card/august-leetcoding-challenge/549/week-1-august-1st-august-7th/3410
 class MyHashSet {
     boolean[] bucket = new boolean[1000000];
 
