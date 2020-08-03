@@ -26,4 +26,29 @@ class SolutionTest {
     void testMartinExample2() {
         assertTrue(subject.isPalindrome("Aa"));
     }
+
+    @Test
+    void testMartinExample3() {
+        assertTrue(subject.isPalindrome("123321"));
+    }
+
+    @Test
+    void testMartinExample4() {
+        assertTrue(subject.isPalindrome("Aba"));
+    }
+
+    @Test
+    void testMartinExample5() {
+        assertTrue(subject.isPalindrome("Abcba"));
+    }
+
+    @Test
+    void testMartinExample6() {
+        assertFalse(subject.isPalindrome("Abcca"));
+    }
+
+    @Test
+    void testFailedExample() {
+        assertTrue(subject.isPalindrome("ab_a"));
+    }
 }
