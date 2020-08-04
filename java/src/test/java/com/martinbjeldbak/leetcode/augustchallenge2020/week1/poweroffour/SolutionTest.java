@@ -31,4 +31,9 @@ class SolutionTest {
     void testMartinExample3() {
         assertTrue(subject.isPowerOfFour(64));
     }
+
+    @Test
+    void testMartinExample4() {
+        assertFalse(subject.isPowerOfFour(0));
+    }
 }
