@@ -1,6 +1,8 @@
 package com.martinbjeldbak.leetcode.augustchallenge2020.week1.verticalordertraversalofabinarytree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 // https://leetcode.com/explore/challenge/card/august-leetcoding-challenge/549/week-1-august-1st-august-7th/3415/
@@ -25,18 +27,21 @@ class Solution {
 
     private List<Integer> verticalSliceAt(TreeNode root) {
         if(root.left != null && root.left.right != null && root.right != null && root.right.left != null) {
-            List<Integer> v = List.of(root.val, root.left.right.val, root.right.left.val);
+            List<Integer> v = Arrays.asList(root.val, root.left.right.val, root.right.left.val);
+            Collections.sort(v);
             root.left.right = null;
             root.right.left = null;
             return v;
         }
         else if(root.left != null && root.left.right != null) {
-            List<Integer> v = List.of(root.val, root.left.right.val);
+            List<Integer> v = Arrays.asList(root.val, root.left.right.val);
+            Collections.sort(v);
             root.left.right = null;
             return v;
         }
         else if(root.right != null && root.right.left != null) {
-            List<Integer> v =  List.of(root.val, root.right.left.val);
+            List<Integer> v =  Arrays.asList(root.val, root.right.left.val);
+            Collections.sort(v);
             root.right.left = null;
             return v;
         }

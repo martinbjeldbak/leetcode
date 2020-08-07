@@ -32,4 +32,11 @@ class SolutionTest {
 
         assertEquals(List.of(List.of(4), List.of(2), List.of(1, 5, 6), List.of(3), List.of(7)), subject.verticalTraversal(root));
     }
+
+    @Test
+    void testMartinExample1() {
+        TreeNode root = new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(6)), new TreeNode(3, new TreeNode(5), new TreeNode(7)));
+
+        assertEquals(List.of(List.of(4), List.of(2), List.of(1, 5, 6), List.of(3), List.of(7)), subject.verticalTraversal(root));
+    }
 }
