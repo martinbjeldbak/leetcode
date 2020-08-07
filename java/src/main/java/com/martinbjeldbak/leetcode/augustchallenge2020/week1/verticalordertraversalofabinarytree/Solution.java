@@ -8,11 +8,13 @@ class Solution {
     public List<List<Integer>> verticalTraversal(TreeNode root) {
         List<List<Integer>> test = new ArrayList<>();
 
+        List<Integer> slice = verticalSliceAt(root);
+
         if(root.left != null) {
             test.addAll(verticalTraversal(root.left));
         }
 
-        test.add(verticalSliceAt(root));
+        test.add(slice);
 
         if(root.right != null) {
             test.addAll(verticalTraversal(root.right));
@@ -23,14 +25,22 @@ class Solution {
 
     private List<Integer> verticalSliceAt(TreeNode root) {
         if(root.left != null && root.left.right != null && root.right != null && root.right.left != null) {
-            return List.of(root.val, root.left.right.val, root.right.left.val);
+            List<Integer> v = List.of(root.val, root.left.right.val, root.right.left.val);
+            root.left.right = null;
+            root.right.left = null;
+            return v;
         }
         else if(root.left != null && root.left.right != null) {
-            return List.of(root.val, root.left.right.val);
+            List<Integer> v = List.of(root.val, root.left.right.val);
+            root.left.right = null;
+            return v;
         }
         else if(root.right != null && root.right.left != null) {
-            return List.of(root.val, root.right.left.val);
+            List<Integer> v =  List.of(root.val, root.right.left.val);
+            root.right.left = null;
+            return v;
         }
+        //return new ArrayList<>();
         return List.of(root.val);
     }
 }
