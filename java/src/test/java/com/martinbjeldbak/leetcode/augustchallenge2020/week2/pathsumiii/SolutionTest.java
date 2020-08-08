@@ -35,6 +35,25 @@ class SolutionTest {
     }
 
     @Test
+    // [1,-2,-3,1,3,-2,null,-1]
+    // 3
+    //        1
+    //     -2   -3
+    //    1  3  -2
+    //  -1
+    void testFailed1() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(-2,
+                        new TreeNode(1,
+                                new TreeNode(-1), null),
+                        new TreeNode(3)),
+                new TreeNode(-3,
+                        new TreeNode(-2), null));
+
+        assertEquals(1, subject.pathSum(root, 3));
+    }
+
+    @Test
     void testMartin1() {
         assertEquals(0, subject.pathSum(new TreeNode(), 1));
     }
