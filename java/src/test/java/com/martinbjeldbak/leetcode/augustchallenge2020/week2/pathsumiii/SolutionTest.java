@@ -34,4 +34,18 @@ class SolutionTest {
         assertEquals(3, subject.pathSum(root, 8));
     }
 
+    @Test
+    void testMartin1() {
+        assertEquals(0, subject.pathSum(new TreeNode(), 1));
+    }
+
+    @Test
+    void testMartin2() {
+        assertEquals(0, subject.pathSum(null, 1));
+    }
+
+    @Test
+    void testMartin3() {
+        assertEquals(0, subject.pathSum(null, 1));
+    }
 }
