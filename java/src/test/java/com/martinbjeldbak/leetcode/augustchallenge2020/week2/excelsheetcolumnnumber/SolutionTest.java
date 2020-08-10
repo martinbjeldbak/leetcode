@@ -24,8 +24,12 @@ class SolutionTest {
 
     @Test
     void testExample4() {
-        // TODO! max input
-        assertEquals(8239, subject.titleToNumber("FXSHRXW"));
+        assertEquals(Integer.MAX_VALUE, subject.titleToNumber("FXSHRXW"));
+    }
+
+    @Test
+    void testFailed1() {
+        assertEquals(703, subject.titleToNumber("AAA"));
     }
 
     @Test
@@ -46,5 +50,10 @@ class SolutionTest {
     @Test
     void testMartinExample4() {
         assertEquals(53, subject.titleToNumber("BA"));
+    }
+
+    @Test
+    void testMartinExample5() {
+        assertEquals(18278, subject.titleToNumber("ZZZ"));
     }
 }

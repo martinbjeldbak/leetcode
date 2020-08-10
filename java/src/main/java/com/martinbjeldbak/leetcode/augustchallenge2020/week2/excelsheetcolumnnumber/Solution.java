@@ -14,7 +14,7 @@ class Solution {
             if((s.length() - i - 1) == 0)
                 offset = alphabet.indexOf(s.charAt(i)) + 1;
             else
-                offset = (26 * (s.length() - i - 1)) * (alphabet.indexOf(s.charAt(i)) + 1);
+                offset = (int)(Math.pow(26, (s.length() - i - 1))) * (alphabet.indexOf(s.charAt(i)) + 1);
 
             sum += offset;
         }
