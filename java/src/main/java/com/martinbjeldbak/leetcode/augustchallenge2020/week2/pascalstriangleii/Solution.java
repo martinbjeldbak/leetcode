@@ -10,7 +10,6 @@ class Solution {
         List<List<Integer>> rows = new ArrayList<>(numRows);
 
         for(int k = 0; k < numRows; k++) {
-            //System.out.print("Row " + k + " : ");
             List<Integer> row = new ArrayList<>(k + 1);
 
             for(int i = 0; i < (k + 1); i++) {
@@ -21,12 +20,9 @@ class Solution {
 
                     row.add(i, prevRow.get(i-1) + prevRow.get(i));
                 }
-                //System.out.print(" " + i);
             }
             rows.add(row);
-            //System.out.println();
         }
-
 
         return rows.get(rowIndex);
     }
