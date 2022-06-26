@@ -30,7 +30,12 @@ func Test_maxScore(t *testing.T) {
 		{
 			name: "Timeout example 1",
 			args: args{cardPoints: []int{53, 14, 91, 35, 51, 9, 80, 27, 6, 15, 77, 86, 34, 62, 55, 45, 91, 45, 23, 75, 66, 42, 62, 13, 34, 18, 89, 67, 93, 83, 100, 14, 92, 73, 48, 2, 47, 93, 99, 100, 88, 84, 48}, k: 43},
-			want: 2,
+			want: 2429,
+		},
+		{
+			name: "Wrong answer example 1",
+			args: args{cardPoints: []int{96, 90, 41, 82, 39, 74, 64, 50, 30}, k: 8},
+			want: 536,
 		},
 	}
 	for _, tt := range tests {
