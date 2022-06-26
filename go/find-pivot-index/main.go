@@ -1,20 +1,17 @@
 package main
 
 func pivotIndex(nums []int) int {
+	numsSum := 0
 	for i := 0; i < len(nums); i++ {
-		leftSum := 0
-		for l := 0; l < i; l++ {
-			leftSum += nums[l]
-		}
+		numsSum += nums[i]
+	}
 
-		rightSum := 0
-		for r := i + 1; r < len(nums); r++ {
-			rightSum += nums[r]
-		}
-
-		if leftSum == rightSum {
+	leftSum := 0
+	for i := 0; i < len(nums); i++ {
+		if leftSum == numsSum-nums[i]-leftSum {
 			return i
 		}
+		leftSum += nums[i]
 	}
 
 	return -1
