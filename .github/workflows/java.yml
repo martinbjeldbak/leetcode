@@ -3,7 +3,7 @@ name: Java Problems CI
 on:
   push:
     paths:
-     - java/
+     - java/**
   workflow_dispatch:
 
 

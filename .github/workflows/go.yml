@@ -3,7 +3,7 @@ name: Golang Problems CI
 on:
   push:
     paths:
-     - go/
+     - go/**
   workflow_dispatch:
 
 defaults:
