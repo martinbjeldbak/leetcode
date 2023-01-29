@@ -1,3 +1,3 @@
-module martinbjeldbak.com/leetcode
+module github.com/martinbjeldbak/leetcode
 
-go 1.18
+go 1.19
