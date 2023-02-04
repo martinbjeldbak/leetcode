@@ -1,6 +1,6 @@
 package spiralmatrix
 
-import "fmt"
+// import "fmt"
 
 func spiralOrder(matrix [][]int) (result []int) {
 	if len(matrix) == 0 {
@@ -19,24 +19,24 @@ func spiralOrder(matrix [][]int) (result []int) {
 	// Step 1: Take first row
 	matrix, row := extractRow(matrix, 0)
 	result = append(result, row...)
-	fmt.Printf("  step 1 (%v):\n  %v\n", result, matrix)
+	// fmt.Printf("  step 1 (%v):\n  %v\n", result, matrix)
 
 	// Step 2: Take last column
 	matrix, col := extractColumn(matrix, n(matrix)-1)
 	result = append(result, col...)
-	fmt.Printf("  step 2 (%v):\n  %v\n", result, matrix)
+	// fmt.Printf("  step 2 (%v):\n  %v\n", result, matrix)
 
 	// Step 3: Take last row and reverse
 	if len(matrix) > 0 {
 		matrix, row = extractRow(matrix, m(matrix)-1)
 		result = append(result, reverseRow(row)...)
-		fmt.Printf("  step 3 (%v):\n  %v\n", result, matrix)
+		// fmt.Printf("  step 3 (%v):\n  %v\n", result, matrix)
 	}
 
 	// Step 4: Take first col and reverse
 	matrix, col = extractColumn(matrix, 0)
 	result = append(result, reverseRow(col)...)
-	fmt.Printf("  step 4 (%v):\n  %v\n", result, matrix)
+	// fmt.Printf("  step 4 (%v):\n  %v\n", result, matrix)
 
 	return append(result, spiralOrder(matrix)...)
 }
@@ -55,16 +55,17 @@ func n(matrix [][]int) int {
 
 func reverseRow(row []int) (reversedRow []int) {
 	reversedRow = make([]int, 0, len(row))
+	rowLength := len(row) - 1
 
-	for i, _ := range row {
-		reversedRow = append(reversedRow, row[len(row)-i-1])
+	for i := range row {
+		reversedRow = append(reversedRow, row[rowLength-i])
 	}
 
 	return reversedRow
 }
 
 func extractRow(matrix [][]int, rowIndex int) (newMatrix [][]int, row []int) {
-	newMatrix = make([][]int, 0, len(matrix)-1)
+	newMatrix = make([][]int, 0, m(matrix)-1)
 	for i, r := range matrix {
 		if i == rowIndex {
 			row = r
