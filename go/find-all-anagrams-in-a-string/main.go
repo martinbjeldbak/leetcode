@@ -1,32 +1,36 @@
 package findallanagramsinastring
 
-import "fmt"
+import (
+	"strings"
+)
 
 func findAnagrams(s string, p string) (result []int) {
 	result = make([]int, 0, len(s))
 
-	fmt.Printf("Reviewing %s\n", s)
+	// fmt.Printf("Reviewing %s\n", s)
 
 	for i := 0; i < len(s); i++ {
-		fmt.Printf("  i = %v: %v\n", i, string(s[i]))
-		contains := true
+		// fmt.Printf("  i = %v: %v\n", i, string(s[i]))
+		continuousMatch := true
+		anagram := p
 
 		for j := 0; j < len(p); j++ {
 			if i+j >= len(s) {
-				fmt.Printf("%v+%v larger than %v\n", i, j, len(p))
-				contains = false
+				// fmt.Printf("%v+%v larger than %v\n", i, j, len(p))
+				continuousMatch = false
 				break
 			}
 
-			if !containsChar(p, rune(s[i+j])) {
-				fmt.Printf("    breaking\n")
-				contains = false
+			anagram, continuousMatch = containsChar(anagram, rune(s[i+j]))
+
+			if !continuousMatch {
+				// fmt.Printf("    breaking\n")
+				continuousMatch = false
 				break
-			} else {
-				fmt.Printf("    p %v contains %v (index %v+%v=%v)\n", p, string(s[i+j]), i, j, i+j)
 			}
+
 		}
-		if contains {
+		if continuousMatch {
 			result = append(result, i)
 		}
 	}
@@ -34,11 +38,11 @@ func findAnagrams(s string, p string) (result []int) {
 	return result
 }
 
-func containsChar(p string, s rune) bool {
+func containsChar(p string, s rune) (string, bool) {
 	for _, v := range p {
 		if v == s {
-			return true
+			return strings.Replace(p, string(v), "", 1), true
 		}
 	}
-	return false
+	return p, false
 }
