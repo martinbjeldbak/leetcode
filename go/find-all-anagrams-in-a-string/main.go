@@ -1,48 +1,35 @@
 package findallanagramsinastring
 
 import (
-	"strings"
+	"reflect"
 )
 
 func findAnagrams(s string, p string) (result []int) {
 	result = make([]int, 0, len(s))
+	freqP := make(map[rune]int)
+	freqS := make(map[rune]int)
+
+	for _, v := range p {
+		freqP[v]++
+	}
 
 	// fmt.Printf("Reviewing %s\n", s)
 
 	for i := 0; i < len(s); i++ {
-		// fmt.Printf("  i = %v: %v\n", i, string(s[i]))
-		continuousMatch := true
-		anagram := p
+
+		freqS = map[rune]int{}
 
 		for j := 0; j < len(p); j++ {
 			if i+j >= len(s) {
-				// fmt.Printf("%v+%v larger than %v\n", i, j, len(p))
-				continuousMatch = false
 				break
 			}
-
-			anagram, continuousMatch = containsChar(anagram, rune(s[i+j]))
-
-			if !continuousMatch {
-				// fmt.Printf("    breaking\n")
-				continuousMatch = false
-				break
-			}
-
+			freqS[rune(s[i+j])]++
 		}
-		if continuousMatch {
+
+		if reflect.DeepEqual(freqP, freqS) {
 			result = append(result, i)
 		}
 	}
 
 	return result
-}
-
-func containsChar(p string, s rune) (string, bool) {
-	for _, v := range p {
-		if v == s {
-			return strings.Replace(p, string(v), "", 1), true
-		}
-	}
-	return p, false
 }
