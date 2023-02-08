@@ -8,10 +8,10 @@ func jump(nums []int) int {
 }
 
 func jumpRec(nums []int, start int, numJumps int) int {
-	fmt.Printf("  start: %v, value: %v, numJumps: %v\n", start, nums[start], numJumps)
-	if start == len(nums)-1 {
+	if start >= len(nums)-1 {
 		return numJumps
 	}
+	fmt.Printf("  start: %v, value: %v, numJumps: %v\n", start, nums[start], numJumps)
 
 	maxJumps := nums[start]
 
